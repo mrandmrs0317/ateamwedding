@@ -1,0 +1,176 @@
+/* Empty. Add your own CSS if you like */
+#main-content {
+	background-image: url("../img/bg2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+body {
+	font-family: -apple-system, 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif;
+}
+
+md-icon > svg {
+	fill: inherit;
+}
+
+#menu-bar {
+	background-color: #C2185B;
+	color: #FFFFFF;
+	display: none;
+}
+
+div.menu > div {
+	padding: 4px;
+	width: 100%;
+	text-align: center;
+}
+
+div.menu > div:not(.active) {
+	background-color: #F8BBD0;
+	color: #212121;
+}
+
+
+.angular-google-map-container { height: 400px; }
+
+
+#getting-there > md-card {
+	width: 100%;
+}
+
+#getting-there table.adp-directions {
+	width: 100%;
+}
+
+.content {
+/*   overflow-x: hidden; */
+/*   position: absolute; */
+/*   left: 0; */
+/*   width: 100%; */
+/*   bottom: 0; */
+/*   overflow-y: auto; */
+}
+
+/* h1 { */
+/*   margin: 0; */
+/* } */
+
+/* #page1 { */
+/*   background: lightgreen; */
+/* } */
+
+/* #page2 { */
+/*   background: lightblue; */
+/* } */
+
+/* #page3 { */
+/*   background: red; */
+/* } */
+
+.scroll {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  display: block;
+  overflow-x: hidden;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll .page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.scroll .page > div {
+  min-height: 100%;
+/*   padding: 1em; */
+}
+.scroll .scrolled {
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.scroll .scrolled.ng-enter {
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+}
+.scroll .scrolled.ng-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.scroll .scrolled.ng-leave {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.scroll .scrolled.ng-leave-active {
+  -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0);
+}
+.scroll .modal {
+  -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
+  transition: opacity 1s ease, -webkit-transform 1s ease;
+  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 1s ease, transform 1s ease, -webkit-transform 1s ease;
+  opacity: 1;
+}
+.scroll .modal.ng-enter {
+  opacity: 0;
+  -webkit-transform: scale(0.95) translate3d(0, 0.5em, 0);
+          transform: scale(0.95) translate3d(0, 0.5em, 0);
+}
+.scroll .modal.ng-enter-active {
+  opacity: 1;
+  -webkit-transform: scale(1) translate3d(0, 0, 0);
+          transform: scale(1) translate3d(0, 0, 0);
+}
+.scroll .modal.ng-leave {
+  opacity: 1;
+}
+.scroll .modal.ng-leave-active {
+  opacity: 0;
+}
+.scroll .backward .scrolled.ng-leave {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.scroll .backward .scrolled.ng-leave-active {
+  -webkit-transform: translate3d(100%, 0, 0);
+          transform: translate3d(100%, 0, 0);
+}
+.scroll .backward .scrolled.ng-enter {
+  -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0);
+}
+.scroll .backward .scrolled.ng-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+.scroll .backward .modal {
+  -webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
+  transition: opacity 1s ease, -webkit-transform 1s ease;
+  transition: opacity 1s ease, transform 1s ease;
+  transition: opacity 1s ease, transform 1s ease, -webkit-transform 1s ease;
+  opacity: 1;
+}
+.scroll .backward .modal.ng-enter {
+  opacity: 0;
+  -webkit-transform: scale(1) translate3d(0, 0, 0);
+          transform: scale(1) translate3d(0, 0, 0);
+}
+.scroll .backward .modal.ng-enter-active {
+  opacity: 1;
+  -webkit-transform: scale(1) translate3d(0, 0, 0);
+          transform: scale(1) translate3d(0, 0, 0);
+}
+.scroll .backward .modal.ng-leave {
+  opacity: 1;
+  -webkit-transform: scale(1) translate3d(0, 0, 0);
+          transform: scale(1) translate3d(0, 0, 0);
+}
+.scroll .backward .modal.ng-leave-active {
+  opacity: 0;
+  -webkit-transform: scale(0.95) translate3d(0, 0.5em, 0);
+          transform: scale(0.95) translate3d(0, 0.5em, 0);
+}

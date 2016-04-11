@@ -1,0 +1,22 @@
+<md-card id="login-card" class="md-whiteframe-12dp" ng-click="loginCtrl.test()">
+	<md-card-title>
+		<md-card-title-text>
+			<span class="md-headline" style="text-align: center;">Alexandra &amp; Aaron</span>
+		</md-card-title-text>
+	</md-card-title>
+	
+	<md-card-content layout="column" layout-align="space-between">
+		<md-input-container>
+			<label>Password</label>
+			<input type="password" ng-model="loginCtrl.password" />
+			<div class="hint">
+				<md-icon md-svg-src="img/icons/lock.svg" class="s12" aria-label="Lock"></md-icon>
+				This website is password protected.
+			</div>
+		</md-input-container>
+		
+		<md-card-actions layout="row" layout-align="end center">
+			<md-button class="md-primary md-raised" ng-click="loginCtrl.login()">Login</md-button>
+		</md-card-actions>
+	</md-card-content>
+</md-card>

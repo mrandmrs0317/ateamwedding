@@ -1,0 +1,50 @@
+#main-content > div > md-card {
+	background-color: rgba(255, 255, 255, 0.9);
+	width: 300px;
+}
+
+#login-card md-input-container.md-has-icon {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+#login-card md-input-container.md-has-icon > label {
+	left: 0;
+	right: auto;
+}
+
+#login-card .s12 {
+	width: 12px;
+	height: 12px;
+}
+
+#login-card md-icon.s12 > svg {
+	fill: rgba(0,0,0,0.54);
+}
+
+#login-card .hint {
+    /* Position the hint */
+    position: absolute;
+    left: 2px;
+    right: auto;
+    bottom: 7px;
+    /* Copy styles from ng-messages */
+    font-size: 12px;
+    line-height: 14px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    /* Set our own color */
+    color: grey; 
+}
+
+#login-card .hint.ng-hide,
+#login-card .hint.ng-enter,
+#login-card .hint.ng-leave.ng-leave-active {
+    bottom: 26px;
+    opacity: 0; 
+}
+
+#login-card .hint.ng-leave,
+#login-card .hint.ng-enter.ng-enter-active {
+    bottom: 7px;
+    opacity: 1; 
+}

@@ -1,0 +1,65 @@
+<div id="test" style="display: none;">
+	<md-toolbar id="main-toolbar">
+		<div class="md-toolbar-tools" layout-align="center center">
+			<div hide-sm hide-xs>
+				<md-button aria-label="Settings" ng-click="vm.go('home')">
+					Home
+				</md-button>
+	
+				<md-button aria-label="Settings" ng-click="vm.go('ourStory')">
+					Our Story
+				</md-button>
+	
+				<md-button aria-label="Settings">
+					Details
+				</md-button>
+	
+				<md-button aria-label="Settings" ng-click="vm.go('gettingThere')">
+					Getting There
+				</md-button>
+	
+				<md-button aria-label="Settings" ng-click="vm.go('registry')">
+					Registry
+				</md-button>
+	
+				<md-button aria-label="Settings" ng-click="vm.go('rsvp')">
+					RSVP
+				</md-button>
+			</div>
+			
+			<md-button hide-gt-sm class="md-icon-button" aria-label="Settings" ng-click="vm.toggleMenu()">
+				<md-icon style="fill:#FFFFFF;" md-svg-icon="img/icons/menu.svg"></md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+	
+	<div hide-gt-sm>
+		<div id="menu-bar" style="font-size: initial;">
+		<div layout="">
+			<div class="menu" layout="column" flex="">
+				<div class="active" flex="">Welcome</div>
+				<div>Wedding Events</div>
+				<div>Wedding Party</div>
+				<div>Attire</div>
+				<div>Registry</div>
+			</div>
+			
+			<div class="menu" layout="column" layout-align="center center" flex="">
+				<div>About Us</div>
+				<div>Photo Album</div>
+				<div>RSVP</div>
+				<div>Travel &amp; Accommodations</div>
+				<div>Contact Us</div>
+			</div>
+		</div>
+	</div>
+	
+	</div>
+
+
+    <div class="content" data-my-content>
+      <div class="scroll">
+        <ui-view id="test3"></ui-view>
+      </div>
+    </div>
+</div>
