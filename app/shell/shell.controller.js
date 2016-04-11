@@ -8,7 +8,7 @@
 		var vm = this;
 		vm.loggedIn = settingsService.getSetting("loggedIn");
 		
-		var imageLocations = ["img/bg.jpg"];
+		var imageLocations = ["img/bg2.jpg"];
 		preloader.preloadImages(imageLocations)
 		.then(function() {
 			$("#main-content").fadeIn(1000);

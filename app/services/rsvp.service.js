@@ -8,13 +8,13 @@
 		var db = new PouchDB('rsvp');
 		var username = 'sceeparioneduallineveree';
 		var password = 'c466a9a7ce4d01df58ac13421e827075801cdd1f';
-		var remoteDb = 'https://' + username + ':' + password + '!@mataco817.cloudant.com/rsvp';
+		var remoteDb = 'https://' + username + ':' + password + '@mataco817.cloudant.com/rsvp';
 		var locked = false;
 		
-		db.changes({
-			since : 'now',
-			live : true
-		}).on('change', notifySubscribers);
+//		db.changes({
+//			since : 'now',
+//			live : true
+//		}).on('change', notifySubscribers);
 
 		var service = {
 			subscribe : function(scope, callback) {
@@ -156,8 +156,10 @@
 				continuous: true
 			};
 			
-			db.replicate.to(remoteDb, opts, syncError);
-			db.replicate.from(remoteDb, opts, syncError);
+//			db.replicate.to(remoteDb, opts, syncError);
+//			db.replicate.from(remoteDb, opts, syncError);
+			db.sync(remoteDb, opts)
+			.on('error', syncError);
 		}
 		
 		function syncError(err) {
