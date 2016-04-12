@@ -11,14 +11,15 @@
 		vm.party = [];
 		
 		vm.find = function() {
-			var id = [vm.firstName, vm.lastName].join(" ");
+//			var id = [vm.firstName, vm.lastName].join(" ");
 			
-			rsvpService.getById(id)
+			rsvpService.getByName(vm.firstName, vm.lastName)
 			.then(function(guest) {
 				vm.result = guest;
 				
 				rsvpService.getByGroup(vm.result.doc.group)
 				.then(function(party) {
+					vm.party = [];
 					for(var i = 0; i < party.length; i++) {
 						if (party[i].id !== vm.result.id) {
 							vm.party.push(party[i]);

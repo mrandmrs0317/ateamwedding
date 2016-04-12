@@ -5,10 +5,12 @@
 	rsvpService.$inject = ['$q', '$timeout', '$rootScope'];
 	function rsvpService($q, $timeout, $rootScope) {
 		/* Connect to DB for user settings */
-		var db = new PouchDB('rsvp');
-		var username = 'sceeparioneduallineveree';
-		var password = 'c466a9a7ce4d01df58ac13421e827075801cdd1f';
-		var remoteDb = 'https://' + username + ':' + password + '@mataco817.cloudant.com/rsvp';
+		
+		var DB_NAME = 'guest_list';
+		var db = new PouchDB(DB_NAME);
+		var username = 'mporrimestrongemandideci';
+		var password = 'de96aaab20972295712a1ce5733e9b242e56c916';
+		var remoteDb = 'https://' + username + ':' + password + '@mataco817.cloudant.com/' + DB_NAME;
 		var locked = false;
 		
 //		db.changes({
@@ -20,8 +22,8 @@
 			subscribe : function(scope, callback) {
 				subscribe(scope, callback);
 			},
-			getById : function(id) {
-				return getById(id);
+			getByName : function(firstName, lastName) {
+				return getByName(firstName, lastName);
 			},
 			getByGroup : function(group) {
 				return getByGroup(group);
@@ -32,7 +34,6 @@
 		};
 		
 		if (remoteDb) {
-			/* do not sync with remote DB if testing */
 			sync();
 		}
 
@@ -43,22 +44,24 @@
 			scope.$on('$destroy', handler);
 		}
 		
-		function getById(id) {
+		function getByName(firstName, lastName) {
 			var deferred = $q.defer();
 			
-			function fingGuestById(guest, emit) {
-				if (guest._id === id) {
+			function fingGuestByFullName(guest, emit) {
+				if (guest.firstName === firstName && guest.lastName === lastName) {
 					emit(guest);
 				}
 			}
 			
-			db.query(fingGuestById, {include_docs : true})
+			db.query(fingGuestByFullName, {
+				include_docs : true
+			})
 			.then(function(result) {
 				if (result.rows.length > 0) {
 					deferred.resolve(result.rows[0]);
 				}
 				else {
-					deferred.reject("No guests found with name '" + id + "'");
+					deferred.reject("No guests found with name '" + firstName + " " + lastName + "'");
 				}
 			})
 			.catch(function(error) {
@@ -78,7 +81,9 @@
 				}
 			}
 			
-			db.query(fingByGroup, {include_docs : true})
+			db.query(fingByGroup, {
+				include_docs : true
+			})
 			.then(function(result) {
 				if (result.rows.length > 0) {
 					deferred.resolve(result.rows);
@@ -137,18 +142,9 @@
 		}
 		
 		function notifySubscribers(changes) {
-//			db.allDocs({
-//				include_docs : true,
-//				descending : true
-//			}, 
-//			function(err, doc) {
-//				guests = angular.copy(doc.rows);
-//				
-				$rootScope.$emit('database-service-event', {
-//					records : doc.rows,
-					changes : changes
-				});
-//			});
+			$rootScope.$emit('database-service-event', {
+				changes : changes
+			});
 		}
 		
 		function sync() {
