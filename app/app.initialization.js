@@ -1,8 +1,8 @@
 (function(angular) {
 	angular.module('ateam').run(runBlock);
 	
-	runBlock.$inject = ['settingsService', 'rsvpService', '$state', '$rootScope'];
-	function runBlock(settingsService, rsvpService, $state, $rootScope) {
+	runBlock.$inject = ['settingsService', '$state', '$rootScope'];
+	function runBlock(settingsService, $state, $rootScope) {
 		if (settingsService.getSetting("loggedIn")) {
 			$state.go('shell.main.page.1');
 		}

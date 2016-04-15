@@ -1,4 +1,4 @@
-<div layout layout-align="center center">
+<div layout="column" layout-align="center center">
 	<md-card>
 		<md-card-title>
 			<md-card-title-text>
@@ -24,9 +24,19 @@
 			</md-input-container>
 			
 			<md-button class="md-primary" ng-click="vm.find()">Search</md-button>
-			
-			<h4>{{vm.result.doc.firstName}}&nbsp;{{vm.result.doc.lastName}}</h4>
-			<h4 ng-repeat="person in vm.party">{{person.doc.firstName}}&nbsp;{{person.doc.lastName}}</h4>
 		</md-card-content>
 	</md-card>
+	
+	<md-card>
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">{{vm.result.groupName}}</span>
+			</md-card-title-text>
+		</md-card-title>
+		
+		<md-card-content>
+			<h4>{{vm.result.name}}</h4>
+			<h4 ng-repeat="person in vm.result.party track by person.id" ng-if="person.id !== vm.result.id">{{person.value}}</h4>
+		</md-card-content>
+	</md-card> 
 </div>

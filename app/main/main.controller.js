@@ -13,9 +13,10 @@
 			$state.go('shell.main.content.' + toState);
 		};
 		
-		vm.googleMapsUrl="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFE4JugB8qV4O2BO_JsfsZTinm_BKSOVk";
+		vm.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDFE4JugB8qV4O2BO_JsfsZTinm_BKSOVk";
 		
-		NgMap.getMap().then(function(map) {
+		NgMap.getMap()
+		.then(function(map) {
 			console.log(map.getCenter());
 			console.log('markers', map.markers);
 			console.log('shapes', map.shapes);
@@ -28,7 +29,6 @@
 			$("#menu-bar").slideToggle();
 		}
 		
-		$("#test").fadeIn("slow");
-		$("div.well").css("width", "100%");
+		$("#main-content").fadeIn("slow");
 	};
 })(angular);

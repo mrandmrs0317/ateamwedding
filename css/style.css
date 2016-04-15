@@ -1,8 +1,18 @@
 /* Empty. Add your own CSS if you like */
-#main-content {
+#shell {
 	background-image: url("../img/bg2.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+#shell > div > md-card {
+	background-color: rgba(255, 255, 255, 0.9);
+	width: 300px;
+	margin: auto;
+}
+
+#shell div.well {
+	width: 100%;
 }
 
 body {
@@ -17,6 +27,7 @@ md-icon > svg {
 	background-color: #C2185B;
 	color: #FFFFFF;
 	display: none;
+	font-size: initial;
 }
 
 div.menu > div {
@@ -30,9 +41,13 @@ div.menu > div:not(.active) {
 	color: #212121;
 }
 
+.angular-google-map-container { 
+	height: 400px; 
+}
 
-.angular-google-map-container { height: 400px; }
-
+#main-content {
+	display: none;
+}
 
 #getting-there > md-card {
 	width: 100%;

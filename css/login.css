@@ -1,6 +1,5 @@
-#main-content > div > md-card {
-	background-color: rgba(255, 255, 255, 0.9);
-	width: 300px;
+#login-card span.md-headline {
+	text-align: center;
 }
 
 #login-card md-input-container.md-has-icon {

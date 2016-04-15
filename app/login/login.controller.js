@@ -9,13 +9,8 @@
 
 		vm.login = function() {
 			$("#login-card").slideUp("slow", function() {
-//				settingsService.getSetting("loggedIn")
-//				$state.transitionTo('shell.main');
 				$scope.$emit('login-event', {loggedIn: true});
 			});
 		};
-		
-//		vm.test = function() {
-//		};
 	};
 })(angular);

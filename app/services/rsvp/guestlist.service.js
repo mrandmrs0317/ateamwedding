@@ -1,12 +1,11 @@
 (function(angular){
-	angular.module('rsvp-service', [])
-	.service('rsvpService', rsvpService);
+	angular.module('rsvp-service')
+	.service('guestListService', guestListService);
 
-	rsvpService.$inject = ['$q', '$timeout', '$rootScope'];
-	function rsvpService($q, $timeout, $rootScope) {
+	guestListService.$inject = ['$q', '$timeout', '$rootScope','groupService'];
+	function guestListService($q, $timeout, $rootScope, groupService) {
 		/* Connect to DB for user settings */
-		
-		var DB_NAME = 'guest_list';
+		var DB_NAME = 'guest_list';		
 		var db = new PouchDB(DB_NAME);
 		var username = 'mporrimestrongemandideci';
 		var password = 'de96aaab20972295712a1ce5733e9b242e56c916';
@@ -46,19 +45,30 @@
 		
 		function getByName(firstName, lastName) {
 			var deferred = $q.defer();
-			
-			function fingGuestByFullName(guest, emit) {
-				if (guest.firstName === firstName && guest.lastName === lastName) {
-					emit(guest);
-				}
-			}
-			
-			db.query(fingGuestByFullName, {
-				include_docs : true
+
+			db.query('guestDoc/groupID', {
+				key : [firstName, lastName].join(" "),
+				limit : 1
 			})
-			.then(function(result) {
-				if (result.rows.length > 0) {
-					deferred.resolve(result.rows[0]);
+			.then(function(guestResult) {
+				if (guestResult.rows.length > 0) {
+					var groupNumber = guestResult.rows[0].value;
+					
+					var promises = {};
+					promises.groupNamePromise = groupService.getById(groupNumber);
+					promises.partyPromise = getByGroup(groupNumber);
+					
+					$q.all(promises)
+					.then(function(results) {
+						var guestInfo = {
+								id : guestResult.rows[0].id,
+								name : guestResult.rows[0].key,
+								groupName : results.groupNamePromise,
+								party : results.partyPromise
+						};
+
+						deferred.resolve(guestInfo);
+					});
 				}
 				else {
 					deferred.reject("No guests found with name '" + firstName + " " + lastName + "'");
@@ -75,14 +85,8 @@
 		function getByGroup(group) {
 			var deferred = $q.defer();
 			
-			function fingByGroup(guest, emit) {
-				if (guest.group === group) {
-					emit(guest);
-				}
-			}
-			
-			db.query(fingByGroup, {
-				include_docs : true
+			db.query('guestDoc/partyView', {
+				key : group
 			})
 			.then(function(result) {
 				if (result.rows.length > 0) {
@@ -103,7 +107,7 @@
 		function getByLastName(partialId) {
 			var deferred = $q.defer();
 			
-			function fingGuestByPartialId(guest, emit) {
+			function findGuestByPartialId(guest, emit) {
 				var nameArray = guest._id.split(' ');
 				var lastName;
 				switch(nameArray.length) {
@@ -124,7 +128,7 @@
 				}
 			}
 			
-			db.query(fingGuestByPartialId, {include_docs : true})
+			db.query(findGuestByPartialId, {include_docs : true})
 			.then(function(result) {
 				if (result.rows.length > 0) {
 					deferred.resolve(result.rows[0]);
