@@ -10,9 +10,17 @@
 					Our Story
 				</md-button>
 	
-				<md-button aria-label="Settings">
-					Details
-				</md-button>
+				<md-menu md-offset="-10 64">
+					<md-button aria-label="Details" ng-click="$mdOpenMenu($event)">
+						Details
+					</md-button>
+	
+					<md-menu-content width="2">
+						<md-menu-item ng-repeat="item in vm.dropDownOptions">
+			              <md-button ng-click="vm.go(item.state)"> <span md-menu-align-target>{{item.string}}</span></md-button>
+			            </md-menu-item>
+					</md-menu-content>
+				</md-menu>
 	
 				<md-button aria-label="Settings" ng-click="vm.go('gettingThere')">
 					Getting There
@@ -30,6 +38,17 @@
 			<md-button hide-gt-sm class="md-icon-button" aria-label="Settings" ng-click="vm.toggleMenu()">
 				<md-icon style="fill:#FFFFFF;" md-svg-icon="img/icons/menu.svg"></md-icon>
 			</md-button>
+			
+			<md-button class="md-icon-button" aria-label="Contact Us" ng-click="vm.toggleMenu()" style="
+    position: absolute;
+    right: 30px;
+    top: 10px;
+">
+				<md-icon style="fill:#FFFFFF;" md-svg-icon="img/icons/email.svg"></md-icon>
+				<md-tooltip md-direction="bottom">
+          Contact Us!
+        </md-tooltip>
+			</md-button>
 		</div>
 	</md-toolbar>
 	
@@ -37,19 +56,19 @@
 		<div id="menu-bar">
 			<div layout>
 				<div class="menu" layout="column" flex="">
-					<div class="active" flex="">Welcome</div>
+<!-- 					<div class="active" flex="">Welcome</div> -->
 					<div>Wedding Events</div>
 					<div>Wedding Party</div>
 					<div>Attire</div>
-					<div>Registry</div>
+<!-- 					<div>Registry</div> -->
 				</div>
 				
 				<div class="menu" layout="column" layout-align="center center" flex="">
-					<div>About Us</div>
+<!-- 					<div>About Us</div> -->
 					<div>Photo Album</div>
-					<div>RSVP</div>
-					<div>Travel &amp; Accommodations</div>
-					<div>Contact Us</div>
+<!-- 					<div>RSVP</div> -->
+<!-- 					<div>Travel &amp; Accommodations</div> -->
+<!-- 					<div>Contact Us</div> -->
 				</div>
 			</div>
 		</div>
@@ -58,7 +77,7 @@
 
     <div class="content" data-my-content>
       <div class="scroll">
-        <ui-view id="test3"></ui-view>
+        <ui-view id="animated"></ui-view>
       </div>
     </div>
 </div>

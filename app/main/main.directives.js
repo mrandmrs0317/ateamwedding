@@ -31,5 +31,28 @@
 					}
 				}
 			};
+		}])
+		.directive('defer', ['$timeout', function($timeout) {
+			return {
+				restrict : "A",
+				link : function(scope, element, attrs) {
+					scope.$watch(function() {
+						if (scope.map) {
+							return scope.map.directionsRenderers[0].directions;
+						}
+						return scope.map;
+					}, showDirections);
+					
+					function showDirections(value) {
+						if (value) {
+							$timeout(function() {
+								$('.test').slideDown(3000);
+							}, 1000);
+						}
+//						console.log("nere");
+//						console.log("nere");
+					}
+				}
+			};
 		}]);
 })(angular);

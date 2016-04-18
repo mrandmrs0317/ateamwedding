@@ -1,5 +1,5 @@
-<div layout="column" layout-align="center center">
-	<md-card>
+<md-content layout="column" layout-padding style="background: transparent;">
+	<md-card flex="auto">
 		<md-card-title>
 			<md-card-title-text>
 				<span class="md-headline">RSVP</span>
@@ -27,16 +27,66 @@
 		</md-card-content>
 	</md-card>
 	
-	<md-card>
+	<md-card id="party-card" data-party="{{vm.found}}" ng-style="partCard" style="padding: 0px;">
 		<md-card-title>
 			<md-card-title-text>
 				<span class="md-headline">{{vm.result.groupName}}</span>
 			</md-card-title-text>
 		</md-card-title>
 		
-		<md-card-content>
-			<h4>{{vm.result.name}}</h4>
-			<h4 ng-repeat="person in vm.result.party track by person.id" ng-if="person.id !== vm.result.id">{{person.value}}</h4>
+		<md-divider></md-divider>
+		
+		<md-card-content ng-repeat-start="person in vm.result.party track by person.id" ng-click="vm.showThing(person)">
+			<div class="" style="clear: both;" flex>
+				<span>{{person.value}}</span>
+				<md-icon style="float:right;" md-svg-icon="img/icons/expand.svg"></md-icon>
+			</div>
 		</md-card-content>
+		
+		<md-divider ng-show="person.expanded"></md-divider>
+		<md-card-content id="{{person.id}}" class="sub-card-content" ng-style="vm.test[person.id]">
+			<div layout="column" ng-hide="person.attending" class="fade">
+				<span>Are you attending?</span><br />
+				<div layout layout-align="end">
+					<md-button class="md-primary" ng-click="person.attending = true;">Attending</md-button>
+					<md-button class="md-primary" ng-click="person.attending = false;">Not Attending</md-button>
+				</div>
+			</div>
+			
+			<div layout="column" ng-show="person.attending" class="fade">
+				<div>
+					<span>We'll see you mofo's at the party!</span><br/>
+					<span class="md-caption">Edit Response</span>
+				</div>
+				
+				<div layout>
+					<md-card class="food-card" md-ink-ripple>
+						<md-card-title>
+							<md-card-title-text>
+								<span class="md-title">Chicken Tings</span>
+							</md-card-title-text>
+						</md-card-title>
+			
+						<md-card-content>
+							<span class="md-caption">Some description about tings</span>
+						</md-card-content>
+					</md-card>
+					
+					<md-card class="food-card" md-ink-ripple>
+						<md-card-title>
+							<md-card-title-text>
+								<span class="md-title">Beef Tings</span>
+							</md-card-title-text>
+						</md-card-title>
+			
+						<md-card-content>
+							<span class="md-caption">Some description about tings</span>
+						</md-card-content>
+					</md-card>
+				</div>
+			</div>
+		</md-card-content>
+		
+		<md-divider ng-if="!$last" ng-repeat-end></md-divider>
 	</md-card> 
-</div>
+</md-content>

@@ -38,6 +38,18 @@
 			url: '/our_story',
 			templateUrl: 'app/main/pages/our-story.tmpl.html'
 		})
+		.state('shell.main.content.attire', {
+			url: '/attire',
+			templateUrl: 'app/main/pages/attire.tmpl.html'
+		})
+		.state('shell.main.content.party', {
+			url: '/wedding_party',
+			templateUrl: 'app/main/pages/party.tmpl.html'
+		})
+		.state('shell.main.content.events', {
+			url: '/wedding_events',
+			templateUrl: 'app/main/pages/events.tmpl.html'
+		})
 		.state('shell.main.content.gettingThere', {
 			url: '/getting_there',
 			templateUrl: 'app/main/pages/getting-there.tmpl.html'

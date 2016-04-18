@@ -1,37 +1,40 @@
 <div id="getting-there" layout="column" layout-align="center center" layout-padding>
-	<md-card flex>
-		<md-card-title>
-			<md-card-title-text>
-				<span class="md-headline">Hello</span>
-			</md-card-title-text>
-		</md-card-title>
+	<div layout style="width: 100%;">
+		<md-card flex="50">
+			<md-card-title>
+				<md-card-title-text>
+					<span class="md-headline">Hello</span>
+				</md-card-title-text>
+			</md-card-title>
+			
+			<md-card-content>
+				<md-input-container>
+			        <label>Search</label>
+			        <input ng-model="vm.search">
+				</md-input-container>
+			</md-card-content>
+		</md-card>
 		
-		<md-card-content>
-			<md-input-container>
-		        <label>Search</label>
-		        <input ng-model="vm.search">
-			</md-input-container>
-		</md-card-content>
-	</md-card>
+		<md-card flex="50">
+			<md-card-content>
+				<div map-lazy-load="https://maps.google.com/maps/api/js"
+				  map-lazy-load-params="{{vm.googleMapsUrl}}">
+					<ng-map zoom="14" center="28.578415, -81.679339" >
+				        <directions
+				          draggable="true"
+		          		  panel="directions-panel"
+				          travel-mode="DRIVING"
+				          origin="current-location"
+				          destination="Bella Collina Golf Club, County Road 455, Montverde, FL">
+				        </directions>
+				      </ng-map>
+				</div>
+<!-- 				<md-progress-circular md-mode="{{vm.loading}}"></md-progress-circular> -->
+			</md-card-content>
+		</md-card>
+	</div>
 	
-	<md-card>
-		<md-card-content>
-			<div map-lazy-load="https://maps.google.com/maps/api/js"
-			  map-lazy-load-params="{{vm.googleMapsUrl}}">
-				<ng-map zoom="14" center="28.578415, -81.679339" >
-			        <directions
-			          draggable="true"
-	          		  panel="directions-panel"
-			          travel-mode="DRIVING"
-			          origin="current-location"
-			          destination="Bella Collina Golf Club, County Road 455, Montverde, FL">
-			        </directions>
-			      </ng-map>
-			</div>
-		</md-card-content>
-	</md-card>
-	
-	<md-card>
+	<md-card class="test" data-defer style="display: none;">
 		<md-card-content>
 			<div flex id="directions-panel"></div>
 		</md-card-content>

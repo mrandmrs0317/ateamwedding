@@ -7,6 +7,20 @@
 	function MainController($scope, $rootScope, $timeout, $mdDialog, $state, NgMap) {
 		var vm = this;
 		
+		vm.dropDownOptions = [{
+			string : 'Attire',
+			state : 'attire'
+		},
+		{
+			string : 'Wedding Party',
+			state : 'party'
+		},
+		{
+			string : 'Wedding Events',
+			state : 'events'
+		}];
+		
+		vm.loading = true;
 		vm.toggleMenu = toggleMenu;
 		
 		vm.go = function(toState) {
@@ -14,13 +28,16 @@
 		};
 		
 		vm.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDFE4JugB8qV4O2BO_JsfsZTinm_BKSOVk";
+//		vm.locatio
 		
-		NgMap.getMap()
-		.then(function(map) {
-			console.log(map.getCenter());
-			console.log('markers', map.markers);
-			console.log('shapes', map.shapes);
-		});
+//		NgMap.getMap()
+//		.then(function(map) {
+//			console.log(map.getCenter());
+//			console.log('markers', map.markers);
+//			console.log('shapes', map.shapes);
+//			
+//			vm.loading = false;
+//		});
 
 		/*
 		 * Internal

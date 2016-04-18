@@ -1,0 +1,68 @@
+
+
+#party-card :focus {
+    outline: -webkit-focus-ring-color auto 0px;
+}
+
+#party-card > md-card-content.sub-card-content {
+	display: none;
+}
+
+#party-card md-card.food-card {
+	position: relative; 
+	display: inline-block;
+}
+
+#party-card {
+	cursor: default;
+}
+
+#party-card .md-headline {
+	text-align: center;
+}
+
+/* .fade.ng-hide { */
+/* } */
+
+/* md-card-content.sub-card-content > div.fade.ng-hide { */
+/*   transition:0.5s linear all; */
+/*   opacity:0; */
+/* } */
+
+/* md-card-content.sub-card-content > div.fade.ng-hide.on-remove { */
+/*   transition:0.5s linear all; */
+/*   opacity:1; */
+/* } */
+
+
+/* .animate-enter,  */
+/* .animate-leave */
+md-card-content.sub-card-content > div.fade { 
+    -webkit-transition: 600ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 600ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 600ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 600ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 600ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space:nowrap;
+} 
+ 
+/* .animate-leave.animate-leave-active, */
+/* .animate-enter  */
+md-card-content.sub-card-content > div.fade.ng-hide {
+    opacity: 0;
+    width: 0px;
+    height: 0px;
+}
+ 
+/* .animate-enter.animate-enter-active,  */
+/* .animate-leave  */
+
+md-card-content.sub-card-content > div.fade.ng-hide.on-remove {
+    opacity: 1;
+    width: 150px;
+    height: 30px;
+}
