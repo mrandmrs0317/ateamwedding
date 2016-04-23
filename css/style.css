@@ -67,6 +67,16 @@ md-menu-item>.md-button span {
 	width: 100%;
 }
 
+md-tooltip {
+    top: 42px;
+    display: block;
+}
+
+md-tooltip > div._md_content {
+    height: 18px;
+    line-height: 18px;
+}
+
 .content {
 /*   overflow-x: hidden; */
 /*   position: absolute; */
