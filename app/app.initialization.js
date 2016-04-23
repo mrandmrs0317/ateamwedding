@@ -4,7 +4,7 @@
 	runBlock.$inject = ['settingsService', '$state', '$rootScope'];
 	function runBlock(settingsService, $state, $rootScope) {
 		if (settingsService.getSetting("loggedIn")) {
-			$state.go('shell.main.page.1');
+			$state.go('shell.main.content.home');
 		}
 		else {
 			$state.go('shell.login');
@@ -22,7 +22,7 @@
 				event.preventDefault();
 				
 				if (fromState.name !== "shell.main") {
-					$state.go('shell.main.page.1');
+					$state.go('shell.main.content.home');
 				}
 			}
 		});

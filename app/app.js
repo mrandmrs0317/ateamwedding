@@ -16,5 +16,5 @@ angular.module('ateam', [
 	'ngMap',
 	
 	/* Services */
-	'settings-service', 'rsvp-service'
+	'settings-service', 'rsvp-service', 'util-service'
 ]);

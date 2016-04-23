@@ -46,6 +46,25 @@
 			$("#menu-bar").slideToggle();
 		}
 		
-		$("#main-content").fadeIn("slow");
+		$("#main-content").fadeIn("slow", welcomeDialog);
+
+		function welcomeDialog() {
+			$mdDialog.show({
+				controller: function(scope, $mdDialog) {
+					scope.close = function() {
+						$mdDialog.hide();
+					};
+				},
+				templateUrl: 'app/main/pages/modal/welcome.tmpl.html',
+				parent: angular.element(document.body),
+				clickOutsideToClose: false,
+				fullscreen: false
+			})
+			.then(function(answer) {
+				$scope.status = 'You said the information was "' + answer + '".';
+			}, function() {
+				$scope.status = 'You cancelled the dialog.';
+			});
+		};
 	};
 })(angular);
