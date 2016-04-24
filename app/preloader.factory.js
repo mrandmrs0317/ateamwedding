@@ -1,5 +1,5 @@
 (function(angular){
-	angular.module('shell', [])
+	angular.module('shell')
 	.factory('preloader', preloader);
 
 	preloader.$inject = ['$q', '$rootScope'];

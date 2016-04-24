@@ -15,11 +15,7 @@ describe('ATeam App', function() {
 		browser.get('/#/login');
 		
 		it('should show our names and ask for password', function() {
-			var title = element(by.css('.md-headline'));
-			
-			title.getText().then(function(text) {
-			  expect(text).toEqual('Alexandra & Aaron');
-			});
+			expect(element(by.id('mono')).isDisplayed()).toBe(true);
 			
 			var password = element(by.model('loginCtrl.password'));
 			password.getText().then(function(text) {
@@ -50,13 +46,14 @@ describe('ATeam App', function() {
 			password.sendKeys('Berberla');
 			
 			var loginBtn = element(by.buttonText('Login'));
-			loginBtn.click();
-
-			browser.wait(EC.visibilityOf($('#welcome-modal')), 5000);
-			browser.getLocationAbsUrl().then(function(url) {
-				expect(url).toEqual('/main/home');
-				
-				describe('Main Desktop View', describeMainDesktopView);
+			loginBtn.click()
+			.then(function() {
+				browser.wait(EC.visibilityOf($('#welcome-modal')), 3000);
+				browser.getLocationAbsUrl().then(function(url) {
+					expect(url).toEqual('/main/home');
+					
+					describe('Main Desktop View', describeMainDesktopView);
+				});
 			});
 		});
 	});
@@ -64,12 +61,14 @@ describe('ATeam App', function() {
 	function describeMainDesktopView() {
 		it ('should show welcome modal popup', function() {			
 			expect(hasClass(element(by.tagName('body')), 'md-dialog-is-showing')).toBe(true);
-			expect(element(by.css('.md-display-2')).getText()).toBe('Hey there');
+			
+			expect(element(by.tagName('img')).isDisplayed()).toBe(true);
 			
 			var okayBtn = element(by.buttonText('Okay, got it!'));
-			okayBtn.click();
-			
-			expect(hasClass(element(by.tagName('body')), 'md-dialog-is-showing')).toBe(false);
+			okayBtn.click()
+			.then(function() {
+				expect(hasClass(element(by.tagName('body')), 'md-dialog-is-showing')).toBe(false);
+			});
 		});
 
 		it('should display all tabs', function() {
@@ -81,53 +80,55 @@ describe('ATeam App', function() {
 			expect(tabPages.getText()).toEqual(['HOME', 'OUR STORY', 'DETAILS', '', '', '', 'GETTING THERE', 'REGISTRY', 'RSVP']);
 
 			
-			describe('Desktop Tab Views', function() {
-				it('should visit our story page', function() {				
-					var ourStoryBtn = element(by.buttonText('Our Story'));
-					browser.wait(EC.elementToBeClickable(ourStoryBtn), 1000);
-					
-					ourStoryBtn.click();
-					
-					browser.getLocationAbsUrl().then(function(url) {
-						expect(url).toEqual('/main/our_story');
-					});
-				});
-			
-				it('should visit getting there page', function() {				
-					var gettingThereBtn = element(by.buttonText('Getting There'));
-					browser.wait(EC.elementToBeClickable(gettingThereBtn), 500);
-					
-					gettingThereBtn.click();
-					
-					browser.getLocationAbsUrl().then(function(url) {
-						expect(url).toEqual('/main/getting_there');
-					});
-				});
-			
-				it('should visit registry page', function() {
-					var registryBtn = element(by.buttonText('Registry'));
-					browser.wait(EC.elementToBeClickable(registryBtn), 500);
-					
-					registryBtn.click();
-					
-					browser.getLocationAbsUrl().then(function(url) {
-						expect(url).toEqual('/main/registry');
-					});
-				});
-			
-				it('should visit rsvp page', function() {
-					var rsvpBtn = element(by.buttonText('RSVP'));
-					browser.wait(EC.elementToBeClickable(rsvpBtn), 500);
-					
-					rsvpBtn.click();
-					
-					browser.getLocationAbsUrl().then(function(url) {
-						expect(url).toEqual('/main/rsvp');
-					});
-				});
-			});
+			describe('Desktop Tab Views', describeDesktopTabViews);
 		});
 		
+	}
+	
+	function describeDesktopTabViews() {
+		it('should visit our story page', function() {				
+			var ourStoryBtn = element(by.buttonText('Our Story'));
+			browser.wait(EC.elementToBeClickable(ourStoryBtn), 1000);
+			
+			ourStoryBtn.click();
+			
+			browser.getLocationAbsUrl().then(function(url) {
+				expect(url).toEqual('/main/our_story');
+			});
+		});
+	
+		it('should visit getting there page', function() {				
+			var gettingThereBtn = element(by.buttonText('Getting There'));
+			browser.wait(EC.elementToBeClickable(gettingThereBtn), 500);
+			
+			gettingThereBtn.click();
+			
+			browser.getLocationAbsUrl().then(function(url) {
+				expect(url).toEqual('/main/getting_there');
+			});
+		});
+	
+		it('should visit registry page', function() {
+			var registryBtn = element(by.buttonText('Registry'));
+			browser.wait(EC.elementToBeClickable(registryBtn), 500);
+			
+			registryBtn.click();
+			
+			browser.getLocationAbsUrl().then(function(url) {
+				expect(url).toEqual('/main/registry');
+			});
+		});
+	
+		it('should visit rsvp page', function() {
+			var rsvpBtn = element(by.buttonText('RSVP'));
+			browser.wait(EC.elementToBeClickable(rsvpBtn), 500);
+			
+			rsvpBtn.click();
+			
+			browser.getLocationAbsUrl().then(function(url) {
+				expect(url).toEqual('/main/rsvp');
+			});
+		});
 	}
 	
 	var hasClass = function (element, cls) {

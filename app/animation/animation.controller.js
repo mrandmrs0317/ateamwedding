@@ -1,6 +1,6 @@
 (function(angular) {
 	angular
-		.module('appRoutes')
+		.module('ateam')
 		.controller('AnimationController', AnimationController);
 	
 	AnimationController.$inject = ['$scope', '$rootScope'];

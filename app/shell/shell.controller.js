@@ -9,8 +9,8 @@
 		
 		vm.loggedIn = settingsService.getSetting("loggedIn");
 		
-		var imageLocations = ["img/bg2.jpg"];
-		preloader.preloadImages(imageLocations)
+		$scope.imageLocations = ["img/bg2.jpg", "img/mono.svg", "img/welcomefinalnooutline.png"];
+		preloader.preloadImages($scope.imageLocations)
 		.then(function() {
 			$("#shell").fadeIn(1000);
 		},

@@ -3,10 +3,11 @@ angular.module('ateam', [
 	'ngMaterial',
 	'ngMessages',
 	'ngAnimate',
+	'ng',
 	
 	/* A-Team Modules */
-	'appConfig',
-	'appRoutes',
+//	'appConfig',
+//	'appRoutes',
 	'shell',
 	'login',
 	'main',
@@ -14,7 +15,8 @@ angular.module('ateam', [
 	
 	/* Google Map Module */
 	'ngMap',
-	
+
+	'ui.router',
 	/* Services */
 	'settings-service', 'rsvp-service', 'util-service'
 ]);

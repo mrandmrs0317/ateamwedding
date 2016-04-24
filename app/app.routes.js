@@ -2,7 +2,7 @@
  * This is for setting up the routing for the application
  */
 (function(angular){
-	angular.module('appRoutes', ['ui.router'])
+	angular.module('ateam')
 	
 	.config(['$stateProvider', '$urlRouterProvider', 
     function($stateProvider, $urlRouterProvider) {
