@@ -6,7 +6,10 @@ exports.config = {
   ],
 
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+    'chromeOptions' : {
+    	args: ['--lang=en', '--window-size=1024,768']
+    }
   },
 
   chromeOnly: true,

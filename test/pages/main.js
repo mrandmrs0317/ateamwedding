@@ -1,7 +1,6 @@
 'use strict';
 
 var MainPage = function(EC) {
-//	browser.get('/#/main/rsvp');
 	browser.get('/#/login');
 	
 	var password = element(by.model('loginCtrl.password'));
@@ -14,90 +13,49 @@ var MainPage = function(EC) {
 	
 	var okayBtn = element(by.buttonText('Okay, got it!'));
 	okayBtn.click();
+
+	browser.wait(EC.not(EC.visibilityOf($('#welcome-modal'))), 2000);
 	
-	browser.wait(EC.not(EC.visibilityOf($('#welcome-modal'))), 5000);
+	/* Grab tab button elements */
+	var tabElements = {};
+	var tabNames = ['Home', 'Our Story', 'Details', 'Getting There', 'Registry', 'RSVP'];
+	for (var index = 0; index < tabNames.length; index++) {
+		tabElements[tabNames[index]] = {
+			btn : element(by.buttonText(tabNames[index]))
+		};
+	}
 	
-//	this.toTitleCase = function(str) {
-//		console.log(str);
-//	    return str.replace(/\w\S*/g, function(txt) {
-//	    	return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-//    	});
-//	};
+	/****************************************
+	 * Click on DETAILS to expand drop down *
+	 * Grab drop down elements 				*
+	 ****************************************/
+	tabElements['Details'].btn.click();
+	var dropDowns = ['Attire', 'Wedding Party', 'Wedding Events'];
+	for (var index = 0; index < dropDowns.length; index++) {
+		tabElements[dropDowns[index]] = {
+			btn : element(by.buttonText(dropDowns[index])),
+			isDropDown : true
+		};
+	}
+	
+	element(by.tagName('md-backdrop')).click();
+	
+	this.toolbarElements = tabElements;
 };
 
-MainPage.prototype = Object.create({}, {
-	pages: { 
-		get: function () { 
-//			var tabPages = element(by.css('.hide-sm.hide-xs')).all(by.tagName('span'))
-//			.filter(function(elem, index) {
-//				return elem.getText().then(function(text) {
-//					return text !== '' && text !== 'DETAILS';
-//				});
-//			});
-//			
-//			element(by.buttonText('Details')).click();
-//			
-//			var dropDownPages = element.all(by.binding('item.string'));
-//			
-//			element(by.tagName('md-backdrop')).click();
-//			
-//			for (var i = 0; i < dropDownPages.count(); i++) {
-//				tabPages.push(dropDownPages.get(i));
-//			}
-			
-//			browser.wait(EC.not(EC.visibilityOf(element(by.tagName('md-backdrop')))), 5000);
-			
-			return ['Home', 'Our Story', 'Attire', 'Wedding Party', 'Wedding Events', 'Getting There', 'Registry', 'RSVP'];
+MainPage.prototype = {
+	goToPage : function(name) {
+		var _element = this.toolbarElements[name];
+		if (_element && _element.isDropDown) {
+			this.toolbarElements['Details'].btn.click()
+			.then(function() {
+				_element.btn.click();
+			});
 		}
-	},
-	dropDownPages: {
-		get: function() {
-			return ['Attire', 'Wedding Party', 'Wedding Events'];
-		}
-	},
-	pageAt: { 
-		get: function (idx) { 
-			return this.tabList.get(idx).getText(); 
-		}
-	},
-	goToPage: { 
-		value: function (EC, name) {
-//			function toTitleCase(str) {
-//				console.log(str);
-//			    return str.replace(/\w\S*/g, function(txt) {
-//			    	return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-//		    	});
-//			}
-//			var pages = this.tabList;
-						
-//			var dropDownPages = ['Attire', 'Wedding Party', 'Wedding Events'];
-			
-			var dropDownIndex = this.dropDownPages.indexOf(name); 
-			if (dropDownIndex > -1) {
-//				for (var i = 0; i < pages.length; i++) {
-//				if (this.pages[name]) {
-					var btn = element(by.buttonText('Details'));
-					
-					btn.click()
-					.then(function() {
-						element(by.buttonText(name)).click();
-					});
-//				}
-//				}
-			}
-			else {
-//				for (var i = 0; i < pages.length; i++) {
-//					var pageActual = toTitleCase(pages.get(i).getText().toLowerCase());
-//					console.log(pageActual);
-					if (this.pages.indexOf(name) > -1) {
-						var btn = element(by.buttonText(name));
-//						browser.wait(EC.not(EC.visibilityOf(element(by.tagName('md-backdrop')))), 5000);
-						btn.click();
-					}
-//				}
-			}
+		else if (_element) {
+			_element.btn.click();
 		}
 	}
-});
+};
 
 module.exports = MainPage;

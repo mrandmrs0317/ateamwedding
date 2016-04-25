@@ -38,7 +38,7 @@ describe('ATeam App', function() {
 			var loginBtn = element(by.buttonText('Login'));
 			var started = loginBtn.click();
 
-			browser.wait(started, 5 * 1000, 'Server should start within 5 seconds');
+			browser.wait(started, 10000, 'Server should start within 10 seconds');
 			browser.getLocationAbsUrl().then(function(url) {
 				expect(url).toEqual('/login');
 			});
@@ -109,60 +109,39 @@ describe('ATeam App', function() {
 		});
 		
 		it('should visit our story page', function() {
-			mainPage.goToPage(EC, 'Our Story');
-//				var ourStoryBtn = element(by.buttonText('Our Story'));
-//				browser.wait(EC.elementToBeClickable(ourStoryBtn), 1000);
-//			
-//				ourStoryBtn.click();
-				
+			mainPage.goToPage('Our Story');
+
 			browser.getLocationAbsUrl().then(function(url) {
 				expect(url).toEqual('/main/our_story');
 			});
 		});
 		
 		it('should visit the attire page', function() {
-			mainPage.goToPage(EC, 'Attire');
-//				var ourStoryBtn = element(by.buttonText('Our Story'));
-//				browser.wait(EC.elementToBeClickable(ourStoryBtn), 1000);
-//			
-//				ourStoryBtn.click();
-				
+			mainPage.goToPage('Attire');
+
 			browser.getLocationAbsUrl().then(function(url) {
 				expect(url).toEqual('/main/attire');
 			});
 		});
 		
 		it('should visit wedding party page', function() {
-			mainPage.goToPage(EC, 'Wedding Party');
-//				var ourStoryBtn = element(by.buttonText('Our Story'));
-//				browser.wait(EC.elementToBeClickable(ourStoryBtn), 1000);
-//			
-//				ourStoryBtn.click();
-				
+			mainPage.goToPage('Wedding Party');
+
 			browser.getLocationAbsUrl().then(function(url) {
 				expect(url).toEqual('/main/wedding_party');
 			});
 		});
 		
 		it('should visit wedding events page', function() {
-			mainPage.goToPage(EC, 'Wedding Events');
-//				var ourStoryBtn = element(by.buttonText('Our Story'));
-//				browser.wait(EC.elementToBeClickable(ourStoryBtn), 1000);
-//			
-//				ourStoryBtn.click();
-				
+			mainPage.goToPage('Wedding Events');
+			
 			browser.getLocationAbsUrl().then(function(url) {
 				expect(url).toEqual('/main/wedding_events');
 			});
 		});
 	
-		it('should visit getting there page', function() {				
-//			var gettingThereBtn = element(by.buttonText('Getting There'));
-//			browser.wait(EC.elementToBeClickable(gettingThereBtn), 500);
-//			
-//			gettingThereBtn.click();
-
-			mainPage.goToPage(EC, 'Getting There');
+		it('should visit getting there page', function() {
+			mainPage.goToPage('Getting There');
 			
 			browser.getLocationAbsUrl().then(function(url) {
 				expect(url).toEqual('/main/getting_there');
@@ -170,12 +149,7 @@ describe('ATeam App', function() {
 		});
 	
 		it('should visit registry page', function() {
-//			var registryBtn = element(by.buttonText('Registry'));
-//			browser.wait(EC.elementToBeClickable(registryBtn), 500);
-//			
-//			registryBtn.click();
-//			
-			mainPage.goToPage(EC, 'Registry');
+			mainPage.goToPage('Registry');
 			
 			browser.getLocationAbsUrl().then(function(url) {
 				expect(url).toEqual('/main/registry');
@@ -183,12 +157,7 @@ describe('ATeam App', function() {
 		});
 	
 		it('should visit rsvp page', function() {
-//			var rsvpBtn = element(by.buttonText('RSVP'));
-//			browser.wait(EC.elementToBeClickable(rsvpBtn), 500);
-//			
-//			rsvpBtn.click();
-
-			mainPage.goToPage(EC, 'RSVP');
+			mainPage.goToPage('RSVP');
 
 			browser.getLocationAbsUrl().then(function(url) {
 				expect(url).toEqual('/main/rsvp');
@@ -222,6 +191,10 @@ describe('ATeam App', function() {
 							expect(party.getText()).toEqual('A-Team');
 							expect(results.getText()).toContain('Aaron Morabito');
 							expect(results.getText()).toContain('Alexandra Osorio');
+							
+							browser.manage().logs().get('browser').then(function(browserLog) {
+								console.log('log: ' + require('util').inspect(browserLog));
+							});
 						});
 					});
 				});
