@@ -9,7 +9,18 @@
 		
 		vm.loggedIn = settingsService.getSetting("loggedIn");
 		
-		$scope.imageLocations = ["img/bg2.jpg", "img/mono.svg", "img/welcomefinalnooutline.png"];
+		$scope.imageLocations = [
+             "img/bg2.jpg", 
+             "img/Monogramupdated.png", "img/Monogramupdated.svg", 
+             "img/finalwelcomeSPELLING.png", "img/finalwelcomeSPELLING.svg", 
+             "img/OurStoryTitle.png", "img/OurStoryTitle.svg", 
+             "img/AttireNEW1box.png", "img/AttireNEW1box.svg", 
+             "img/AttireTitle.png", "img/AttireTitle.svg", 
+             "img/WeddingPartyTitle.png", "img/WeddingPartyTitle.svg", 
+             "img/WeddingEventsTitle.png", "img/WeddingEventsTitle.svg", 
+             "img/TravelTitle.png", "img/TravelTitle.svg", 
+             "img/GiftsTitle.png", "img/GiftsTitle.svg", 
+             "img/RSVPtitle.png", "img/RSVPtitle.svg"];
 		preloader.preloadImages($scope.imageLocations)
 		.then(function() {
 			$("#shell").fadeIn(1000);

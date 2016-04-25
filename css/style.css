@@ -1,3 +1,9 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url('come_unto_me/ComeUntoMe.ttf');
+}
+
+
 /* Empty. Add your own CSS if you like */
 #shell {
 	background-image: url("../img/bg2.jpg");
@@ -22,6 +28,7 @@
 
 body {
 	font-family: -apple-system, 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif;
+/* 	font-family: myFirstFont; */
 }
 
 md-icon > svg {
