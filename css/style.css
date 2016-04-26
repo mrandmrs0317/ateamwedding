@@ -21,6 +21,19 @@
 	width: 100%;
 }
 
+#welcome-modal {
+	padding-bottom: 8px;
+}
+
+#welcome-img {
+	height: 100%;
+	width: 100%;
+}
+
+#welcome-img > svg text {
+	font-family: myFirstFont;
+}
+
 #party-card {
 /* 	display: none; */
 /* 	width: 0%; */
@@ -29,6 +42,11 @@
 body {
 	font-family: -apple-system, 'Helvetica Neue', Roboto, 'Segoe UI', sans-serif;
 /* 	font-family: myFirstFont; */
+}
+
+body p {
+	font-family: myFirstFont;
+	font-size: xx-large;
 }
 
 md-icon > svg {
@@ -67,7 +85,7 @@ md-menu-item>.md-button span {
 }
 
 #getting-there > md-card {
-	width: 100%;
+/* 	width: 100%; */
 }
 
 #getting-there table.adp-directions {
@@ -82,6 +100,10 @@ md-tooltip {
 md-tooltip > div._md_content {
     height: 18px;
     line-height: 18px;
+}
+
+md-menu-content {
+    background-color: #EFD7D4;
 }
 
 .content {

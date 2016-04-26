@@ -65,7 +65,7 @@ describe('ATeam App', function() {
 		it ('should show welcome modal popup', function() {			
 			expect(hasClass(element(by.tagName('body')), 'md-dialog-is-showing')).toBe(true);
 			
-			expect(element(by.tagName('img')).isDisplayed()).toBe(true);
+			expect(element(by.id('welcome-img')).isDisplayed()).toBe(true);
 			
 			var okayBtn = element(by.buttonText('Okay, got it!'));
 			okayBtn.click()

@@ -20,7 +20,8 @@
              "img/WeddingEventsTitle.png", "img/WeddingEventsTitle.svg", 
              "img/TravelTitle.png", "img/TravelTitle.svg", 
              "img/GiftsTitle.png", "img/GiftsTitle.svg", 
-             "img/RSVPtitle.png", "img/RSVPtitle.svg"];
+             "img/RSVPtitle.png", "img/RSVPtitle.svg",
+             "img/Herside.svg", "img/Hisside.svg"];
 		preloader.preloadImages($scope.imageLocations)
 		.then(function() {
 			$("#shell").fadeIn(1000);
