@@ -26,7 +26,7 @@
           "test-single-run": "node node_modules/karma/bin/karma start test/karma.conf.js  --single-run",
       
           "preupdate-webdriver": "npm install",
-          "update-webdriver": "webdriver-manager update --ignore_ssl --proxy http://proxy-lmi.global.lmco.com:8080",
+          "update-webdriver": "webdriver-manager update",
       
           "preprotractor": "npm run update-webdriver",
           "protractor": "protractor test/protractor-conf.js",

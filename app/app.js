@@ -6,8 +6,6 @@ angular.module('ateam', [
 	'ng',
 	
 	/* A-Team Modules */
-//	'appConfig',
-//	'appRoutes',
 	'shell',
 	'login',
 	'main',
