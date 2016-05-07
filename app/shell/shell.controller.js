@@ -11,17 +11,17 @@
 		
 		$scope.imageLocations = [
              "img/bg.jpg", 
-             "img/Monogramupdated.png", "img/Monogramupdated.svg", 
-             "img/finalwelcomeSPELLING.png", "img/finalwelcomeSPELLING.svg", 
-             "img/OurStoryTitle.png", "img/OurStoryTitle.svg", 
-             "img/AttireNEW1box.png", "img/AttireNEW1box.svg", 
-             "img/AttireTitle.png", "img/AttireTitle.svg", 
-             "img/WeddingPartyTitle.png", "img/WeddingPartyTitle.svg", 
-             "img/WeddingEventsTitle.png", "img/WeddingEventsTitle.svg", 
-             "img/TravelTitle.png", "img/TravelTitle.svg", 
-             "img/GiftsTitle.png", "img/GiftsTitle.svg", 
-             "img/RSVPtitle.png", "img/RSVPtitle.svg",
-             "img/Herside.svg", "img/Hisside.svg"];
+             "img/Monogramupdated.png", "img/Monogramupdated.min.svg", 
+             "img/finalwelcomeSPELLING.png", "img/finalwelcomeSPELLING.min.svg", 
+             "img/OurStoryTitle.png", "img/OurStoryTitle.min.svg", 
+             "img/AttireNEW1box.png", "img/AttireNEW1box.min.svg", 
+             "img/AttireTitle.png", "img/AttireTitle.min.svg", 
+             "img/WeddingPartyTitle.png", "img/WeddingPartyTitle.min.svg", 
+             "img/WeddingEventsTitle.png", "img/WeddingEventsTitle.min.svg", 
+             "img/TravelTitle.png", "img/TravelTitle.min.svg", 
+             "img/GiftsTitle.png", "img/GiftsTitle.min.svg", 
+             "img/RSVPtitle.png", "img/RSVPtitle.min.svg",
+             "img/Herside.min.svg", "img/Hisside.min.svg"];
 		preloader.preloadImages($scope.imageLocations)
 		.then(function() {
 			$("#shell").fadeIn(1000, function() {

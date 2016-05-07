@@ -88,7 +88,8 @@
 		
 		function showCookie() {
 			var welcomeCookie = $cookies.getObject('welcomeCookie');
-			return moment().isAfter(moment(welcomeCookie).add(1, 'day'));
+						
+			return !welcomeCookie || moment().isAfter(moment(welcomeCookie).add(1, 'second'));
 		}
 	};
 })(angular);

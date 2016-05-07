@@ -10,7 +10,7 @@
 					<span>Our Story</span>
 				</md-button>
 	
-				<md-menu md-offset="-10 64">
+				<md-menu md-offset="24 64">
 					<md-button aria-label="Details" ng-click="$mdOpenMenu($event)">
 						<span>Details</span>
 					</md-button>
@@ -87,17 +87,18 @@
 			<h1 class="md-toolbar-tools">Menu</h1>
 		</md-toolbar>
 		
-		<md-content layout-padding>
+		<md-content style="
+    overflow: hidden;
+">
         	<md-list>
-				<md-subheader class="md-no-sticky">Single Action Checkboxes</md-subheader>
-				<md-list-item ng-repeat="option in vm.sideNavOptions" ng-click="vm.sideNavGo(option)">
-					<p> {{ option }} </p>
+				<md-list-item ng-repeat-start="option in vm.sideNavOptions" ng-click="vm.sideNavGo(option)">
+					<span> {{ option }} </span>
 				</md-list-item>
-				<md-divider></md-divider>
+				<md-divider ng-repeat-end></md-divider>
 			</md-list>
 			
-			<md-button ng-click="vm.toggleSideNav()" class="md-primary">
-				Close Sidenav Right
+			<md-button style="width: 100%;" ng-click="vm.toggleSideNav()" class="md-primary">
+				Close Menu
 			</md-button>
 		</md-content>
 	</md-sidenav>

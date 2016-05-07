@@ -56,8 +56,7 @@ div.menu > div:not(.active) {
 	color: #212121;
 }
 
-md-menu-item>.md-button span {
-	width: 100%;
+md-menu-item>.md-button {
     text-align: center;
 }
 

@@ -49,6 +49,7 @@ MainPage.prototype = {
 		if (_element && _element.isDropDown) {
 			this.toolbarElements['Details'].btn.click()
 			.then(function() {
+				browser.wait(protractor.ExpectedConditions.visibilityOf(_element), 2000);
 				_element.btn.click();
 			});
 		}
