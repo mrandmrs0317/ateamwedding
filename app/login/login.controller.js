@@ -7,11 +7,13 @@
 	function LoginController($scope, $state, utilService) {
 		var vm = this;
 
-		vm.login = function() {
+		vm.login = function($event) {
+			$event.preventDefault();
+			
 			utilService.login(vm.password)
-			.then(function() {
+			.then(function(response) {
 				$("#login-card").slideUp("slow", function() {
-					$scope.$emit('login-event', {loggedIn: true});
+					$scope.$emit('login-event', {loggedIn: response});
 				});
 			});
 		};

@@ -10,7 +10,7 @@
 		vm.loggedIn = settingsService.getSetting("loggedIn");
 		
 		$scope.imageLocations = [
-             "img/bg2.jpg", 
+             "img/bg.jpg", 
              "img/Monogramupdated.png", "img/Monogramupdated.svg", 
              "img/finalwelcomeSPELLING.png", "img/finalwelcomeSPELLING.svg", 
              "img/OurStoryTitle.png", "img/OurStoryTitle.svg", 
@@ -24,17 +24,18 @@
              "img/Herside.svg", "img/Hisside.svg"];
 		preloader.preloadImages($scope.imageLocations)
 		.then(function() {
-			$("#shell").fadeIn(1000);
+			$("#shell").fadeIn(1000, function() {
+			});
 		},
 		function() {
 			console.log("error");
 		});
 		
 		$scope.$on('login-event', function(event, params) {
-			vm.loggedIn = params.loggedIn;
-			settingsService.setSetting("loggedIn", vm.loggedIn);
+			settingsService.setSetting("loggedIn", params.loggedIn);
 			
 			$state.transitionTo('shell.main.content.home');
+			$("#shell").css({"display":"block"});
 		});
 	};
 })(angular);

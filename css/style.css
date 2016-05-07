@@ -6,9 +6,12 @@
 
 /* Empty. Add your own CSS if you like */
 #shell {
-	background-image: url("../img/bg2.jpg");
+	background-image: url("../img/bg.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
+	
+    background-attachment: fixed;
+    background-position: top right; 
 }
 
 #shell > div > md-card {
@@ -19,24 +22,6 @@
 
 #shell div.well {
 	width: 100%;
-}
-
-#welcome-modal {
-	padding-bottom: 8px;
-}
-
-#welcome-img {
-	height: 100%;
-	width: 100%;
-}
-
-#welcome-img > svg text {
-	font-family: myFirstFont;
-}
-
-#party-card {
-/* 	display: none; */
-/* 	width: 0%; */
 }
 
 body {
@@ -67,29 +52,13 @@ div.menu > div {
 }
 
 div.menu > div:not(.active) {
-	background-color: #F8BBD0;
+	background-color: #EFD7D4;
 	color: #212121;
-}
-
-.angular-google-map-container { 
-	height: 400px; 
-}
-
-#main-content {
-	display: none;
 }
 
 md-menu-item>.md-button span {
 	width: 100%;
     text-align: center;
-}
-
-#getting-there > md-card {
-/* 	width: 100%; */
-}
-
-#getting-there table.adp-directions {
-	width: 100%;
 }
 
 md-tooltip {

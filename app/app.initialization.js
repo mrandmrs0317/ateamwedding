@@ -26,5 +26,10 @@
 				}
 			}
 		});
+		
+		function checkLoginCookie() {
+			var loggedCookie = $cookies.getObject('loggedIn');
+			return moment().isAfter(moment(loggedCookie.time).add(1, 'day'));
+		}
 	};
 })(angular);

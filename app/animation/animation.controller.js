@@ -5,8 +5,8 @@
 	
 	AnimationController.$inject = ['$scope', '$rootScope'];
 	function AnimationController($scope, $rootScope) {
-		var states = ['home', 'ourStory', 'attire', 'party', 'events', 'gettingThere', 'registry', 'rsvp'];
-		var verticalStates = ['attire', 'party', 'events'];
+		var states = ['home', 'ourStory', 'attire', 'weddingParty', 'weddingEvents', 'gettingThere', 'registry', 'rsvp'];
+		var verticalStates = ['attire', 'weddingParty', 'weddingEvents'];
 		
 		$rootScope.$on('$stateChangeStart', 
 		function(event, toState, toParams, fromState) {

@@ -3,9 +3,13 @@
 		.module('main')
 		.controller('MainController', MainController);
 	
-	MainController.$inject = ['$scope', '$rootScope', '$timeout', '$mdDialog', '$state', 'NgMap'];
-	function MainController($scope, $rootScope, $timeout, $mdDialog, $state, NgMap) {
+	MainController.$inject = ['$scope', '$cookies', '$rootScope', '$timeout', '$mdDialog', '$state', '$mdSidenav', '$log', 'NgMap'];
+	function MainController($scope, $cookies, $rootScope, $timeout, $mdDialog, $state, $mdSidenav, $log, NgMap) {
 		var vm = this;
+		
+		vm.toggleSideNav = buildToggler('left');
+		
+		vm.sideNavOptions = ["Home", "Our Story", "Attire", "Wedding Party", "Wedding Events", "Getting There", "Registry", "RSVP"];
 		
 		vm.dropDownOptions = [{
 			string : 'Attire',
@@ -13,11 +17,11 @@
 		},
 		{
 			string : 'Wedding Party',
-			state : 'party'
+			state : 'weddingParty'
 		},
 		{
 			string : 'Wedding Events',
-			state : 'events'
+			state : 'weddingEvents'
 		}];
 		
 		vm.loading = true;
@@ -26,9 +30,12 @@
 		vm.go = function(toState) {
 			$state.go('shell.main.content.' + toState);
 		};
+		vm.sideNavGo = function(option) {
+			vm.go(Case.camel(option));
+			vm.toggleSideNav();
+		};
 		
 		vm.googleMapsUrl = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDFE4JugB8qV4O2BO_JsfsZTinm_BKSOVk";
-//		vm.locatio
 		
 //		NgMap.getMap()
 //		.then(function(map) {
@@ -46,25 +53,42 @@
 			$("#menu-bar").slideToggle();
 		}
 		
-		$("#main-content").fadeIn("slow", welcomeDialog);
+		function buildToggler(navID) {
+			return function() {
+				$mdSidenav(navID)
+				.toggle()
+				.then(function () {
+					$log.debug("toggle " + navID + " is done");
+				});
+			}
+		}
+
+		$("#main-page").fadeIn("slow", welcomeDialog);
 
 		function welcomeDialog() {
-			$mdDialog.show({
-				controller: function(scope, $mdDialog) {
-					scope.close = function() {
-						$mdDialog.hide();
-					};
-				},
-				templateUrl: 'app/main/pages/modal/welcome.tmpl.html',
-				parent: angular.element(document.body),
-				clickOutsideToClose: false,
-				fullscreen: false
-			})
-			.then(function(answer) {
-				$scope.status = 'You said the information was "' + answer + '".';
-			}, function() {
-				$scope.status = 'You cancelled the dialog.';
-			});
+			if (showCookie()) {			
+				$mdDialog.show({
+					controller: function(scope, $mdDialog) {
+						scope.close = function() {
+							$mdDialog.hide();
+						};
+					},
+					templateUrl: 'app/main/pages/modal/welcome.tmpl.html',
+					parent: angular.element(document.body),
+					clickOutsideToClose: false,
+					fullscreen: false
+				})
+				.then(function(answer) {
+					$cookies.putObject('welcomeCookie', moment());
+				}, function() {
+					$scope.status = 'You cancelled the dialog.';
+				});
+			}
 		};
+		
+		function showCookie() {
+			var welcomeCookie = $cookies.getObject('welcomeCookie');
+			return moment().isAfter(moment(welcomeCookie).add(1, 'day'));
+		}
 	};
 })(angular);

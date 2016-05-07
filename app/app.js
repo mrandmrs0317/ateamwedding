@@ -3,6 +3,7 @@ angular.module('ateam', [
 	'ngMaterial',
 	'ngMessages',
 	'ngAnimate',
+	'ngCookies',
 	'ng',
 	
 	/* A-Team Modules */

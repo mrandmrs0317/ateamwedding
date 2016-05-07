@@ -1,0 +1,55 @@
+{
+  "ecmaVersion": 5,
+  "ide": {
+    "scriptPaths": [
+      {
+        "type": "FOLDER",
+        "path": "app"
+      },
+      {
+        "type": "FOLDER",
+        "path": "bower_components"
+      },
+      {
+        "type": "FOLDER",
+        "path": "css"
+      },
+      {
+        "type": "FOLDER",
+        "path": "img"
+      },
+      {
+        "type": "FOLDER",
+        "path": "js"
+      },
+      {
+        "type": "FOLDER",
+        "path": "test"
+      }
+    ]
+  },
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "outline": {
+      
+    },
+    "jasmine": {
+      
+    },
+    "jshint": {
+      
+    },
+    "angular1": {
+      
+    },
+    "protractor": {
+      
+    }
+  },
+  "libs": [
+    "browser",
+    "jquery"
+  ]
+}

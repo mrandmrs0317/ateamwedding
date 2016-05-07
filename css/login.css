@@ -12,6 +12,11 @@
 	right: auto;
 }
 
+#mono {
+	height: initial;
+    width: initial;
+}
+
 #login-card .s12 {
 	width: 12px;
 	height: 12px;
@@ -39,6 +44,10 @@
     transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
     /* Set our own color */
     color: grey; 
+}
+
+#login-card .hint > span {
+	padding-left: 4px;
 }
 
 #login-card .hint.ng-hide,

@@ -1,0 +1,85 @@
+#main-page {
+	display: none;
+}
+
+#welcome-modal {
+	padding-bottom: 8px;
+}
+
+#welcome-img {
+	height: 100%;
+	width: 100%;
+}
+
+#welcome-img > svg text {
+	font-family: myFirstFont;
+}
+
+md-content.main-page-content {
+	display: block;
+}
+
+md-content.main-page-content p {
+	text-align: center;
+}
+
+img.header-img {
+	margin: auto;
+	max-width: 100%;
+	max-height: 100%;
+	width: 100%;
+	margin-top: 16px;
+}
+
+/* Registry */
+#registry > img.header-img {
+	height: 185px;
+}
+
+/* Our Story */
+#our-story > img.header-img {
+	height: 200px;
+}
+
+#our-story div.his-her-container > img {
+	margin: auto;
+}
+
+/* Attire */
+#attire > img.header-img {	
+	height: 200px;
+}
+
+/* Wedding Events */
+#wedding-events > img.header-img {	
+	height: 200px;  
+}
+
+/* Wedding Party */
+#wedding-party > img.header-img {
+	height: 200px;
+}
+
+/* Getting There */
+#getting-there > img.header-img {
+	height: 200px;
+}
+
+#getting-there ng-map {
+	height: 462px;
+}
+
+#getting-there table.adp-directions {
+	width: 100%;
+}
+
+/* RSVP */
+#rsvp > img.header-img {
+/* 	margin-bottom: 0px; */
+	height: 165px !important;
+}
+
+#party-card {
+/* 	display: none; */
+/* 	width: 0%; */
+}

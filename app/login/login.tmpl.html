@@ -1,35 +1,33 @@
 <md-card id="login-card" class="md-whiteframe-12dp">
 	<md-card-title>
 		<md-card-title-text>
-<!-- 			<span class="md-headline">Alexandra&nbsp;&amp;&nbsp;Aaron</span> -->
-			<md-icon id="mono"
-				md-svg-src="img/mono.svg" aria-label="Monogram" style="
-    height: initial;
-    width: initial;
-">
+			<md-icon 
+				id="mono"
+				md-svg-src="img/mono.svg" 
+				aria-label="Monogram">
 			</md-icon>
 		</md-card-title-text>
 	</md-card-title>
 	
-		<form ng-submit="loginCtrl.login()">
-	<md-card-content layout="column" layout-align="space-between">
-		<md-input-container>
-			<label>Password</label>
+	<form ng-submit="loginCtrl.login()">
+		<md-card-content layout="column" layout-align="space-between">
+			<md-input-container>
+				<label>Password</label>
+				
+				<input type="password" ng-model="loginCtrl.password" />
+				
+				<div class="hint">
+					<md-icon
+						md-svg-src="img/icons/lock.svg" 
+						class="s12" aria-label="Lock">
+					</md-icon>
+					<span>This website is password protected.</span>
+				</div>
+			</md-input-container>
 			
-			<input type="password" ng-model="loginCtrl.password" />
-			
-			<div class="hint">
-				<md-icon
-					md-svg-src="img/icons/lock.svg" 
-					class="s12" aria-label="Lock">
-				</md-icon>
-				<span style="padding-left: 4px;">This website is password protected.</span>
-			</div>
-		</md-input-container>
-		
-		<md-card-actions layout="row" layout-align="end center">
-			<md-button class="md-primary md-raised md-hue-2" type="submit" ng-click="loginCtrl.login()">Login</md-button>
-		</md-card-actions>
-	</md-card-content>
-		</form>
+			<md-card-actions layout="row" layout-align="end center">
+				<md-button class="md-primary md-raised md-hue-2" type="submit" ng-click="loginCtrl.login($event)">Login</md-button>
+			</md-card-actions>
+		</md-card-content>
+	</form>
 </md-card>

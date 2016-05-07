@@ -18,52 +18,64 @@
 		function login(_pass) {
 			var deferred = $q.defer();
 			
-			var DB_NAME = 'keys';		
-			var username = 'timinginsticanytorninear';
-			var password = 'a2452418b760f2de5454164e38788403316c67ab';
-			var remoteDb = 'https://' + username + ':' + password + '@mataco817.cloudant.com/' + DB_NAME;
-			var db = new PouchDB(remoteDb);
-			
-			var shaObj = new jsSHA("SHA-512", "TEXT");
-			shaObj.update(salt);
-			var hash = shaObj.getHash("HEX");
-			
-			db.query('key/keyView', {
-				key : hash,
-				limit : 1
-			})
-			.then(function(keyResult) {
-				if (keyResult.rows.length > 0) {
-					var shaObj = new jsSHA("SHA-512", "TEXT");
-					shaObj.setHMACKey(keyResult.rows[0].key, "HEX");
-					shaObj.update(_pass);
-					var hmac = shaObj.getHMAC("HEX");
-					
-					db.query('key/passView', {
-						key : hmac,
-						limit : 1
-					})
-					.then(function(passResult) {
-						if (passResult.rows.length > 0 && passResult.rows[0].value) {
-							deferred.resolve();
-						}
-						else {
-							deferred.reject("Incorrect password.");
-						}
-					})
-					.catch(function(error) {
-						console.log(error);
-						deferred.reject(error);
-					});
-				}
-				else {
+			if (!_pass) {
+				deferred.reject("No Password Provided.");
+			}
+			else {
+				var shaObj = new jsSHA("SHA-512", "TEXT");
+				shaObj.update(salt);
+				var hash = shaObj.getHash("HEX");
+				
+				$http({
+					url : "http://71.47.10.190:8080/getKey",
+					method : "POST",
+					headers : {
+						'Content-Type': 'application/json',
+						'Cache-Control': 'no-cache'
+					},
+					data : {
+						"content" : hash
+					}
+				})
+				.then(function(keyResult) {
+					if (keyResult.data && keyResult.data.response) {
+						var shaObj = new jsSHA("SHA-512", "TEXT");
+						shaObj.setHMACKey(keyResult.data.response, "HEX");
+						shaObj.update(_pass);
+						var hmac = shaObj.getHMAC("HEX");
+						
+						$http({
+							url : "http://71.47.10.190:8080/getPass",
+							method : "POST",
+							headers : {
+								'Content-Type': 'application/json',
+								'Cache-Control': 'no-cache'
+							},
+							data : {
+								"content" : hmac
+							}
+						})
+						.then(function(passResult) {
+							if (passResult.data && passResult.data.response !== "Not Authorized") {
+								deferred.resolve(passResult.data.response);
+							}
+							else {
+								deferred.reject("Incorrect password.");
+							}
+						})
+						.catch(function(error) {
+							console.log(error);
+							deferred.reject(error);
+						});
+					}
+					else {
+						deferred.reject("Could not verify database connection.");
+					}
+				},
+				function(data) {
 					deferred.reject("Could not verify database connection.");
-				}
-			})
-			.catch(function(error) {
-				console.log(error);
-				deferred.reject(error);
-			});
+				});				
+			}
 			
 			return deferred.promise;
 		}

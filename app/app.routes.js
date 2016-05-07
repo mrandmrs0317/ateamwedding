@@ -42,11 +42,11 @@
 			url: '/attire',
 			templateUrl: 'app/main/pages/attire.tmpl.html'
 		})
-		.state('shell.main.content.party', {
+		.state('shell.main.content.weddingParty', {
 			url: '/wedding_party',
 			templateUrl: 'app/main/pages/party.tmpl.html'
 		})
-		.state('shell.main.content.events', {
+		.state('shell.main.content.weddingEvents', {
 			url: '/wedding_events',
 			templateUrl: 'app/main/pages/events.tmpl.html'
 		})

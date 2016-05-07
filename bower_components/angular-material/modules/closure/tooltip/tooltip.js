@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.1.0-rc3
+ * v1.1.0-rc4-master-c81f9f1
  */
 goog.provide('ng.material.components.tooltip');
 goog.require('ng.material.core');
@@ -159,12 +159,13 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdThe
       if (parent[0] && 'MutationObserver' in $window) {
         // use an mutationObserver to tackle #2602
         var attributeObserver = new MutationObserver(function(mutations) {
-          mutations.forEach(function (mutation) {
-            if (mutation.attributeName === 'disabled' && parent[0].disabled) {
-              setVisible(false);
-              scope.$digest(); // make sure the elements gets updated
-            }
-          });
+          if (mutations.some(function (mutation) {
+              return (mutation.attributeName === 'disabled' && parent[0].disabled);
+            })) {
+              $mdUtil.nextTick(function() {
+                setVisible(false);
+              });
+          }
         });
 
         attributeObserver.observe(parent[0], { attributes: true});
@@ -241,8 +242,9 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdThe
     }
 
     function showTooltip() {
-      // Insert the element before positioning it, so we can get the position
+      // Insert the element and position at top left, so we can get the position
       // and check if we should display it
+      element.css({top: 0, left: 0});
       tooltipParent.append(element);
 
       // Check if we should display it or not.

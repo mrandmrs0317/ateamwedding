@@ -1,7 +1,7 @@
-<div id="main-content">
+<div id="main-page">
 	<md-toolbar id="main-toolbar">
-		<div class="md-toolbar-tools" layout-align="center center">
-			<div hide-sm hide-xs>
+		<div class="md-toolbar-tools" layout layout-align="center center">
+			<div hide-sm hide-xs>				
 				<md-button aria-label="Settings" ng-click="vm.go('home')">
 					<span>Home</span>
 				</md-button>
@@ -35,15 +35,19 @@
 				</md-button>
 			</div>
 			
-			<md-button hide-gt-sm class="md-icon-button" aria-label="Settings" ng-click="vm.toggleMenu()">
+			<md-button data-resizer hide-gt-sm class="md-icon-button" aria-label="Settings" ng-click="vm.toggleSideNav()" style="
+			    position: absolute;
+			    left: 30px;
+			    top: 12px;
+			">
 				<md-icon style="fill:#FFFFFF;" md-svg-icon="img/icons/menu.svg"></md-icon>
 			</md-button>
 			
-			<md-button class="md-icon-button" aria-label="Contact Us" ng-click="vm.toggleMenu()" style="
-    position: absolute;
-    right: 30px;
-    top: 10px;
-">
+			<md-button data-resizer class="md-icon-button" aria-label="Contact Us" ng-click="vm.toggleMenu()" style="
+			    position: absolute;
+			    right: 30px;
+			    top: 12px;
+			">
 				<md-icon style="fill:#FFFFFF;" md-svg-icon="img/icons/email.svg"></md-icon>
 				<md-tooltip md-direction="bottom">
           Contact Us!
@@ -52,29 +56,52 @@
 		</div>
 	</md-toolbar>
 	
-	<div hide-gt-sm>
+	<div hide-gt-sm style="
+		    position: absolute;
+		    /* height: 200px; */
+		    left: 0;
+		    top: 48px;
+		    right: 0;
+		">
 		<div id="menu-bar">
 			<div layout>
 				<div class="menu" layout="column" flex="">
-<!-- 					<div class="active" flex="">Welcome</div> -->
+					<div class="active" flex="">Home</div>
 					<div>Wedding Events</div>
 					<div>Wedding Party</div>
 					<div>Attire</div>
-<!-- 					<div>Registry</div> -->
 				</div>
 				
 				<div class="menu" layout="column" layout-align="center center" flex="">
-<!-- 					<div>About Us</div> -->
-					<div>Photo Album</div>
-<!-- 					<div>RSVP</div> -->
-<!-- 					<div>Travel &amp; Accommodations</div> -->
-<!-- 					<div>Contact Us</div> -->
+					<div>Our Story</div>
+					<div>Getting There</div>
+					<div>Travel &amp; Accommodations</div>
+					<div>RSVP</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
+	<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+		<md-toolbar class="md-theme-light">
+			<h1 class="md-toolbar-tools">Menu</h1>
+		</md-toolbar>
+		
+		<md-content layout-padding>
+        	<md-list>
+				<md-subheader class="md-no-sticky">Single Action Checkboxes</md-subheader>
+				<md-list-item ng-repeat="option in vm.sideNavOptions" ng-click="vm.sideNavGo(option)">
+					<p> {{ option }} </p>
+				</md-list-item>
+				<md-divider></md-divider>
+			</md-list>
+			
+			<md-button ng-click="vm.toggleSideNav()" class="md-primary">
+				Close Sidenav Right
+			</md-button>
+		</md-content>
+	</md-sidenav>
+    
     <div class="content" data-my-content>
       <div class="scroll">
         <ui-view id="animated"></ui-view>

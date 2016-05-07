@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.1.0-rc3
+ * v1.1.0-rc4-master-c81f9f1
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -58,7 +58,7 @@ function MdSubheaderDirective($mdSticky, $compile, $mdTheming, $mdUtil) {
     template: (
     '<div class="md-subheader _md">' +
     '  <div class="_md-subheader-inner">' +
-    '    <span class="_md-subheader-content"></span>' +
+    '    <div class="_md-subheader-content"></div>' +
     '  </div>' +
     '</div>'
     ),
