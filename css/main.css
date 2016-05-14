@@ -25,10 +25,31 @@ md-content.main-page-content p {
 
 img.header-img {
 	margin: auto;
-	max-width: 100%;
-	max-height: 100%;
+/* 	max-width: 100%; */
+/* 	max-height: 100%; */
+/* 	width: 100%; */
+/* 	margin-top: 16px; */
+	height: 200px;
+}
+
+md-icon.header-img {
 	width: 100%;
-	margin-top: 16px;
+	height: 200px;
+}
+
+object.header-img  svg > text.cls-1,
+md-icon.header-img > svg > text.cls-1 {
+	font-family: title1;
+}
+object.header-img  svg > text.cls-2,
+object.header-img  svg > text.cls-3,
+md-icon.header-img > svg > text.cls-2,
+md-icon.header-img > svg > text.cls-3 {
+	font-family: title2;
+}
+object.header-img  svg > text.cls-4,
+md-icon.header-img > svg > text.cls-4 {
+	font-family: title1;
 }
 
 /* Registry */

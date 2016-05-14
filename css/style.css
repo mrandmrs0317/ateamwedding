@@ -3,6 +3,27 @@
     src: url('come_unto_me/ComeUntoMe.ttf');
 }
 
+@font-face {
+    font-family: mainFont;
+    src: url('Opentype/Blooming Elegant Sans.otf');
+}
+
+@font-face {
+    font-family: mainFontBold;
+    src: url('Opentype/Blooming Elegant Sans Bold.otf');
+}
+
+
+@font-face {
+    font-family: title1;
+    src: url('amatic/Amatic-Bold.ttf');
+}
+
+@font-face {
+    font-family: title2;
+    src: url('janda/JandaStylishScript.ttf');
+}
+
 
 /* Empty. Add your own CSS if you like */
 #shell {
@@ -30,7 +51,7 @@ body {
 }
 
 body p {
-	font-family: myFirstFont;
+	font-family: mainFont;
 	font-size: xx-large;
 }
 
